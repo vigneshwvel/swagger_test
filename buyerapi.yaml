@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: Simple API
+  description: A simple API to demonstrate Swagger in JSON format.
+  version: 1.0.0
+servers:
+  - url: 'http://65.108.50.91/zaaroz_new/public/api/za1'
+    description: Local server
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  responses: {}
+  schemas: {}
+paths:
+  /settings:
+    post:
+      summary: Your POST endpoint
+      tags: []
+      responses: {}
+      operationId: post-settings
+      description: this api used for retrive zaaroz admin panel setting detail
+  /buyer_signin:
+    post:
+      summary: Your POST endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: post-buyer_signin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                device_token:
+                  type: string
+                device_type:
+                  type: string
+                mobile_no:
+                  type: string
+                unique_id:
+                  type: string
+              x-examples:
+                Example 1:
+                  device_token: 'eevnxf2MT5mO26OQvyCbjD:APA91bHTmppjl8ZBkZOOrf2ZN7NtD-Kypun3gjveTAARSSguG7a3-jGFKVPFczmqSYyuQV-tt20GRD30vZn0OBT9gHKEvZNDsjDlyBVEVcmXas9NbBMeOfQ'
+                  device_type: A
+                  mobile_no: '7826907370'
+                  unique_id: 838e343d-80a2-4988-bc97-0f9c8256d223
+  /buyer_details:
+    post:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-buyer_details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                restaurant_id:
+                  type: string
+                  x-stoplight:
+                    id: b51mddo6e8uh1
+      parameters:
+        - schema:
+            type: string
+          in: header
+      security: []
