@@ -9,18 +9,20 @@
 <body>
     <div id="swagger-ui"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-standalone-preset.js"></script>
     <script>
         window.onload = function() {
             const ui = SwaggerUIBundle({
-                url: 'https://raw.githubusercontent.com/vigneshwvel/swagger_test/refs/heads/main/swaggersample.yaml',
+                url: 'https://raw.githubusercontent.com/vigneshwvel/swagger_test/refs/heads/main/buyerapi.yaml',
                 dom_id: '#swagger-ui',
                 presets: [
                     SwaggerUIBundle.presets.apis,
-                    SwaggerUIBundle.SwaggerUIStandalonePreset
+                    SwaggerUIStandalonePreset
                 ],
-                layout: "StandaloneLayout"
+                layout: "BaseLayout"
             });
             window.ui = ui;
         };
     </script>
 </body>
+</html>
