@@ -1,0 +1,346 @@
+openapi: 3.0.0
+info:
+  title: Buyer App API
+  description: Zaaroz Buyer App API
+  version: 1.0.0
+servers:
+  - url: https://65.108.50.91/zaaroz_new/public/api/za1
+    description: Local server
+  - url: https://uat.zaaroz.in/zaarsec/public/api/za1/
+    description: UAT server
+paths:
+  /settings:
+    post:
+      summary: Your POST endpoint
+      tags: []
+      operationId: post-settings
+      description: this api used for retrive zaaroz admin panel setting detail'
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                200 response:
+                  value: >-
+                    {"code":200,"result":{"currency":"&#x20B9;","country_code":"+91","terms_url":"https:\/\/dev.zaaroz.in\/zaaroz_new\/public\/view_page\/40818\/8","android_buyer_app_version":"1.0","ios_buyer_app_version":"","privacypolicy_url":"https:\/\/dev.zaaroz.in\/zaaroz_new\/public\/view_page\/40818\/7","otp_via":"msg91","is_paytm_live_key_enable":"0","paytm_merchant_id":"MARITI35559545952417","paytm_merchant_key":"jBxZDkgagiye4tay","paytm_url":"https:\/\/securegw-stage.paytm.in\/"}}
+  /buyer_verify:
+    summary: Buyer Mobile Number Verify Api
+    post:
+      summary: ''
+      description: Buyer Mobile Number Verify Api
+      operationId: ''
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                device_token:
+                  type: string
+                  example: '7826907370'
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                200 response:
+                  value: '{"code":200,"msg":"Success"}'
+  /buyer_signin:
+    post:
+      summary: Your POST endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                200 response:
+                  value: >-
+                    {"code":200,"msg":"Success","buyer_details":{"status":"0","buy_id":1,"zone_id":7,"area_id":406,"u_id":2644,"buyer_cat_id":1,"shop_name":"Zaaroz
+                    shop one","alise_shop_name":"Buyer Vignesh
+                    V","owner_name":"Vignesh","email":"vikydev@zaaroz.com","mobile_no":"7826907370","alternate_mobile":"1224567574","address":"Chidambaram,
+                    Tamil Nadu, India","full_address":"Chidambaram, Tamil
+                    Nadu","latitude":"11.4070449","longitude":"79.6912455","image":"Buyerimg_16890566457428.jpeg","shop_category_name":"Petty
+                    Shop","payment_method":2,"current_wallet_balance":"3992.14","wallet_balance_limit":"50000.00","image_url":"https:\/\/zrzdev.s3.ap-south-1.amazonaws.com\/public\/media\/buyer_icon_image\/original\/Buyerimg_16890566457428.jpeg","gst_no":"33NCDFG1234K1PP","pan_no":"NCDFG1234D","customer_id":230667,"address_id":379446,"accesstoken":"184d02a35e21105a86b71df9dc3fb3b2","payment_method_B2B":["Cash
+                    On Delivery","Wallet"]}}
+      operationId: post-buyer_signin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                device_token:
+                  type: string
+                  example: >-
+                    eevnxf2MT5mO26OQvyCbjD:APA91bHTmppjl8ZBkZOOrf2ZN7NtD-Kypun3gjveTAARSSguG7a3-jGFKVPFczmqSYyuQV-tt20GRD30vZn0OBT9gHKEvZNDsjDlyBVEVcmXas9NbBMeOfQ
+                device_type:
+                  type: string
+                  example: A
+                mobile_no:
+                  type: string
+                  example: '7826907370'
+                unique_id:
+                  type: string
+                  example: 838e343d-80a2-4988-bc97-0f9c8256d223
+  /buyer_generate_login_otp:
+    summary: Buyer Login Send OTP API
+    post:
+      summary: ''
+      description: Buyer Login Send OTP API
+      operationId: ''
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                mobile_no:
+                  type: string
+                  example: '7826907370'
+                country_code:
+                  type: string
+                  example: '+91'
+                otp_type:
+                  type: string
+                  example: '5'
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                200 response:
+                  value: >-
+                    {"code":200,"msg":"Success","result":"354769","support_no":""}
+  /buyer_verify_login_otp:
+    summary: Buyer Login Verify OTP API
+    post:
+      summary: ''
+      description: Buyer Login Verify OTP API
+      operationId: ''
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                mobile_no:
+                  type: string
+                  example: '7826907370'
+                country_code:
+                  type: string
+                  example: '+91'
+                otp_type:
+                  type: string
+                  example: '5'
+                otp:
+                  type: string
+                  example: '123456'
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                200 response:
+                  value: '{"code":200,"msg":"Success"}'
+  /buyer_details:
+    post:
+      summary: Your POST endpoint
+      tags: []
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                200 response:
+                  value: ' {"code":200,"msg":"Success","result":[{"buy_id":1,"zone_id":7,"area_id":406,"buyer_cat_id":1,"shop_name":"Zaaroz shop one","alise_shop_name":"Buyer Vignesh V","owner_name":"Vignesh","address":"Chidambaram, Tamil Nadu, India","full_address":"Chidambaram, Tamil Nadu","latitude":"11.4070449","longitude":"79.6912455","image":"Buyerimg_16890566457428.jpeg","image_url":"https:\/\/zrzdev.s3.ap-south-1.amazonaws.com\/public\/media\/buyer_icon_image\/original\/Buyerimg_16890566457428.jpeg","shop_category_name":"Petty Shop","email":"vikydev@zaaroz.com","mobile_no":"7826907370","alternate_mobile":"1224567574","gst_no":"33NCDFG1234K1PP","pan_no":"NCDFG1234D","payment_method_B2B":["Cash On Delivery","Wallet"],"wallet_balance_limit":"50000.00","used_wallet_amount":"5290.74","current_wallet_balance":"44709.26"}]}'
+      operationId: post-buyer_details
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                restaurant_id:
+                  type: string
+                  example: user123
+      parameters: []
+      security:
+        - bearerAuth: []
+  /buyer_vendor_near_res:
+    post:
+      summary: Your POST endpoint
+      tags: []
+      operationId: post-buyer_vendor_near_res
+      parameters: []
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                200 response:
+                  value: |-
+                    {
+                        "code": 200,
+                        "msg": "Resturant listing",
+                        "Result": [
+                            {
+                                "is_recurring_order_enable": 0,
+                                "send_order_type": 1,
+                                "delivery_payment_option": "Both",
+                                "pickup_payment_option": "",
+                                "is_freebie_available": 0,
+                                "freebie_item_name": "",
+                                "isFreeDelivery": "0",
+                                "category_id": 0,
+                                "delivery_charge": "0",
+                                "restaurant_id": "3868",
+                                "isDisplayCategoryImage": "0",
+                                "category_type": 1,
+                                "name": "b2b restaurantt",
+                                "b2b_restaurant_name": "",
+                                "email": "priyank221997@gmail.com",
+                                "avg_rating": "0",
+                                "Address": "ZAAROZ B2B, Sethiyathope - Maduranthaganallur - Chidambaram Road, Chidambaram, Kannangudi, Tamil Nadu, India",
+                                "full_address": "ZAAROZ B2B, Sethiyathope - Maduranthaganallur - Chidambaram Road, Chidambaram, Kannangudi, Tamil Nadu, India",
+                                "parcel_charges": 0,
+                                "area": "",
+                                "city": "",
+                                "pincode": "",
+                                "is_halal": 0,
+                                "is_veg_only": 0,
+                                "is_display_category_image": 0,
+                                "is_customer_item_upload_option": 0,
+                                "restaurant_reopen_time": "",
+                                "discount_percentage": "10.00",
+                                "admin_beverages_enable": 0,
+                                "unique_code": "",
+                                "delivery_time": "60 Mins",
+                                "delivery_times": "60 Mins",
+                                "delivery_septime": "60",
+                                "delivery_septime_type": "Mins",
+                                "is_promoted": "0",
+                                "minimum_order_value": "2",
+                                "two_person_price": "12",
+                                "service_fee": "7",
+                                "SGST": "0",
+                                "CGST": "0",
+                                "promo_code": "",
+                                "latitude": "11.4034307",
+                                "longitude": "79.6745803",
+                                "payment_option": "Both",
+                                "delivery_type_time_slots": "0",
+                                "pickup_timming": [],
+                                "delivered_timming": [],
+                                "rating": 0,
+                                "rating_user_count": 0,
+                                "redis_time_zone": "asia/kolkata",
+                                "redis_system_start_hours": "00:00:00",
+                                "redis_system_end_hours": "23:45:00",
+                                "redis_resturant_hours": [
+                                    {
+                                        "open_time": "00:00:00",
+                                        "close_time": "02:30:00",
+                                        "day": "Monday"
+                                    },
+                                    {
+                                        "open_time": "08:00:00",
+                                        "close_time": "18:45:00",
+                                        "day": "Monday"
+                                    },
+                                    {
+                                        "open_time": "20:15:00",
+                                        "close_time": "23:00:00",
+                                        "day": "Monday"
+                                    },
+                                    {
+                                        "open_time": "07:00:00",
+                                        "close_time": "23:30:00",
+                                        "day": "Saturday"
+                                    },
+                                    {
+                                        "open_time": "07:00:00",
+                                        "close_time": "23:30:00",
+                                        "day": "Sunday"
+                                    },
+                                    {
+                                        "open_time": "04:30:00",
+                                        "close_time": "20:30:00",
+                                        "day": "Thursday"
+                                    },
+                                    {
+                                        "open_time": "21:15:00",
+                                        "close_time": "23:30:00",
+                                        "day": "Thursday"
+                                    },
+                                    {
+                                        "open_time": "08:00:00",
+                                        "close_time": "23:30:00",
+                                        "day": "Tuesday"
+                                    },
+                                    {
+                                        "open_time": "13:00:00",
+                                        "close_time": "15:00:00",
+                                        "day": "Tuesday"
+                                    },
+                                    {
+                                        "open_time": "18:00:00",
+                                        "close_time": "23:30:00",
+                                        "day": "Tuesday"
+                                    },
+                                    {
+                                        "open_time": "16:00:00",
+                                        "close_time": "23:30:00",
+                                        "day": "Wednesday"
+                                    }
+                                ],
+                                "restaurant_on_off": "1",
+                                "is_redis_restaurant_closed": "1",
+                                "icon_image": "",
+                                "cuisine_name": [
+                                    "Traditional Sweets"
+                                ]
+                            }], "bannerData": []}
+  /buyer_logout:
+    summary: Buyer Logout Api
+    post:
+      summary: ''
+      description: Buyer Logout Api
+      operationId: ''
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                device_token:
+                  type: string
+                  example: '1'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                200 response:
+                  value: '{"code":200,"msg":"Logout successfully."}'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
