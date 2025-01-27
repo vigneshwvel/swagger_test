@@ -3,8 +3,11 @@ info:
   title: Simple API
   description: A simple API to demonstrate Swagger in JSON format.
   version: 1.0.0
+
 servers:
-  - url: 'http://65.108.50.91/zaaroz_new/public/api/za1'
+  - url: https://65.108.50.91/zaaroz_new/public/api/za1
+    description: Local server
+  - url: https://uat.zaaroz.in/zaarsec/public/api/za1/
     description: Local server
 components:
   securitySchemes:
@@ -56,10 +59,10 @@ paths:
                   unique_id: 838e343d-80a2-4988-bc97-0f9c8256d223
   /buyer_details:
     post:
-      summary: Your GET endpoint
+      summary: Your POST endpoint
       tags: []
       responses: {}
-      operationId: get-buyer_details
+      operationId: post-buyer_details
       requestBody:
         content:
           application/json:
@@ -68,10 +71,17 @@ paths:
               properties:
                 restaurant_id:
                   type: string
-                  x-stoplight:
-                    id: b51mddo6e8uh1
-      parameters:
-        - schema:
-            type: string
-          in: header
-      security: []
+              x-examples:
+                Example 1:
+                  restaurant_id: '1'
+      parameters: []
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
