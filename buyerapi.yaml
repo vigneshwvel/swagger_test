@@ -8,26 +8,22 @@ servers:
   - url: https://65.108.50.91/zaaroz_new/public/api/za1
     description: Local server
   - url: https://uat.zaaroz.in/zaarsec/public/api/za1/
-    description: Local server
+    description: UAT server
+
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
+      bearerFormat: JWT
   responses: {}
   schemas: {}
+
 paths:
   /settings:
     post:
-      summary: Your POST endpoint
-      tags: []
-      responses: {}
-      operationId: post-settings
-      description: this api used for retrive zaaroz admin panel setting detail
-  /buyer_signin:
-    post:
-      summary: Your POST endpoint
-      tags: []
+      summary: Retrieve Zaaroz admin panel settings
+      tags: [Settings]
       responses:
         '200':
           description: OK
@@ -35,8 +31,28 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: {}
-      operationId: post-buyer_signin
+                properties:
+                  setting: 
+                    type: string
+                    example: "Value"
+      operationId: postSettings
+      description: This API is used to retrieve Zaaroz admin panel setting details.
+
+  /buyer_signin:
+    post:
+      summary: Buyer Sign-In
+      tags: [Buyer]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+      operationId: postBuyerSignin
       requestBody:
         content:
           application/json:
@@ -51,18 +67,27 @@ paths:
                   type: string
                 unique_id:
                   type: string
-              x-examples:
-                Example 1:
-                  device_token: 'eevnxf2MT5mO26OQvyCbjD:APA91bHTmppjl8ZBkZOOrf2ZN7NtD-Kypun3gjveTAARSSguG7a3-jGFKVPFczmqSYyuQV-tt20GRD30vZn0OBT9gHKEvZNDsjDlyBVEVcmXas9NbBMeOfQ'
-                  device_type: A
-                  mobile_no: '7826907370'
-                  unique_id: 838e343d-80a2-4988-bc97-0f9c8256d223
+              example:
+                device_token: 'eevnxf2MT5mO26OQvyCbjD:APA91bHTmppjl8ZBkZOOrf2ZN7NtD-Kypun3gjveTAARSSguG7a3-jGFKVPFczmqSYyuQV-tt20GRD30vZn0OBT9gHKEvZNDsjDlyBVEVcmXas9NbBMeOfQ'
+                device_type: A
+                mobile_no: '7826907370'
+                unique_id: 838e343d-80a2-4988-bc97-0f9c8256d223
+
   /buyer_details:
     post:
-      summary: Your POST endpoint
-      tags: []
-      responses: {}
-      operationId: post-buyer_details
+      summary: Retrieve Buyer Details
+      tags: [Buyer]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  details:
+                    type: string
+      operationId: postBuyerDetails
       requestBody:
         content:
           application/json:
@@ -71,17 +96,11 @@ paths:
               properties:
                 restaurant_id:
                   type: string
-              x-examples:
-                Example 1:
-                  restaurant_id: '1'
+              example:
+                restaurant_id: '1'
       parameters: []
       security:
         - bearerAuth: []
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+
 security:
   - bearerAuth: []
